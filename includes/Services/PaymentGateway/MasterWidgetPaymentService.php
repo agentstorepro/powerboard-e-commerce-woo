@@ -81,7 +81,8 @@ class MasterWidgetPaymentService extends WC_Payment_Gateway {
 			$this->title            = $this->method_title;
 			$this->template_service = new TemplateService( $this );
 
-			// TODO: Why do we need this?
+			// Load decrypted access token into settings array for display in admin UI.
+			// The token will be masked with asterisks in generate_settings_html() before rendering.
 			$this->settings[ DBSettingsHelper::get_access_token_key() ] = DBSettingsHelper::get_access_token();
 			$this->update_available_payment_methods();
 		}
